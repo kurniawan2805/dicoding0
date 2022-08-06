@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="src/index.js"></script>
+    <title>Belajar HTML</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Belajar Tensorflow</h1>
+    </header>
+    <main>
+      <div id="content">
+        <article>
+          Tensorflow.js adalah porting dari tensorflow original yang ditulis
+          dengan python dan diolah sebagai set API agar dapat dikembangkan di
+          ekosistem berbasis javascript. Tensorflow.js memungkinkan developer
+          web ataupun aplikasi apapun berbasis javascript untuk melatih base
+          model / pre-trained model machine learning yang telah ada melalui
+          proses transfer learning untuk menyelesaikan suatu permasalahan.
+          Transfer learning ini memungkinkan untuk dapat melakukan training /
+          latihan pada resources yang lebih terbatas namun menghasilkan hasil
+          yang lebih cepat. Kekuatan library tensorflow untuk mengembangkan
+          sistem saraf tiruan dipadukan dengan flexibilitas javascript sehingga
+          dapat diaplikasikan pada platform yang lebih luas: web browser,
+          server-side bahkan perangkat IoT, aplikasi desktop, dan aplikasi
+          mobile. Transfer Learning memanfaatkan pengetahuan yang telah
+          dipelajari sebelumnya untuk mengenali hal yang berbeda dengan
+          fitur-fitur yang mirip. Jika kita telah memiliki neuron2 di otak untuk
+          mengidentifikasi suatu objek dengan karakteristik tertentu, kita dapat
+          mengenali objek semisal dengan karakteristik yang mirip. Begitu juga
+          dengan model dari machine learning yang telah dilatih untuk mengenali
+          suatu gambar, maka kita dapat menggunakan model tersebut untuk
+          pekerjaan yang berbeda namun memiliki kesamaan fitur. MobileNet salah
+          satu model machine learning yang cukup populer untuk mengenali lebih
+          dari 1000 objek yang berbeda pada suatu gambar seperti kucing atau
+          mobil. Model ini telah dilatih dengan dataset yang sangat besar:
+          ImageNet yang memiliki jutaan gambar dilengkapi dengan label
+          masing-masing gambar yang sesuai. Menentukan model yang sesuai
+          MobileNet memiliki beberapa jenis yang dapat diakses pada Tensoflow
+          hub. Model yang disediakan dapat berupa tipe "image classification"
+          dapat berupa tipe "image feature vector". Model bertipe image feature
+          vector adalah penyederhanaan dari MobileNet untuk menghasilkan berupa
+          feature vector daripada final classification. Model ini biasa disebut
+          "base model" untuk dilakukan treatment lanjutan berupa transfer
+          learning. Keuntungan menggunakan transfer learning Dibandingkan dengan
+          membuat model dari awal, menggunakan transfer learning akan diperoleh
+          beberapa keuntungan: 1. Waktu untuk melatih model akan berkurang
+          sangat signifikan. 2. Hanya membutuhkan sedikit contoh objek yang akan
+          diklasifikasikan karena model sudah dilatih sebelumnya. Untuk dapat
+          menggunakan tensorflow.js, library tensorflow perlu diimpor terlebih
+          dahulu
+        </article>
+        <article>
+          Machine Learning membutuhkan dataset yang sangat besar agar dapat
+          menghasilkan model yang baik. Untuk training suatu model terutama yang
+          berbentuk gambar untuk computer vision bisa membutuhkan ratusan ribu
+          hingga jutaan gambar. Hal ini akan sangat menguras resource. Jika
+          misalkan 1 gambar membutuhkan 10 kB, maka 10.000.000 gambar tentu
+          tidak akan muat untuk dijalankan dalam RAM 8 GB. Di antara solusinya
+          adalah dengan membagi proses menjadi beberapa batch, misala 1 batch
+          1000 gambar, maka aka nada 10.000 batch untuk mengolah data gambar
+          ini. Hal ini dimungkinkan untuk dilakukan di tensorflow dengan
+          menggunakan special data struktur: tf.data.Dataset. API ini memberikan
+          kemudahan untuk mengolah data dalam jumlah besar, misalnya untuk
+          membersihkan data, scaling data, atau transformasi data. Diantara
+          fungsi yang banyak digunakan untuk manipulasi dataset: 1. Filter:
+          untuk memfilter data sesuai dengan kriteria yang diinginkan. Syntax:
+          tf_dataset = tf_dataset.filter(filter_func). Sebagai contoh kita dapat
+          melakukan filter terhadap data yg kosong, atau gambar yg blur 2. Map:
+          untuk melakukan transformasi terhadap data. Syntax: tf_dataset =
+          tf_dataset.filter(lambda x:x/255), sebagai contoh syntax untuk
+          melakukan normalisasi array gambar dari [0, 255] menjadi range [0,1]
+          API ini dapat dilakukan chaining sehingga dapat digabung menjadi hanya
+          1 baris. Sebagai contoh: tf_dataset =
+          tf.data.Dataset.list_files('images/*.jpg').map(process_img).filter(filter_func).
+          map(lambda x:x/255) List_files digunakan untuk mencari file sesuai
+          dengan pattern input Setelah dilakukan operasi terhadap gambar, untuk
+          memanggilnya maka perlu dilakukan iterasi terhadap dataset: for file
+          in tf_dataset.take(5): print(file.numpy()) take artinya data yang
+          diambil, sementara skip artinya data yang tidak diambil. Dengan syntax
+          ini kita dapat membagi dataset menjadi misalnya 80% training untuk
+          take, dan sisanya skip. Dalam pengolahan bentuk data ini dalam format
+          tensor, sehingga perlu untuk diubah formatnya misalnya dalam bentuk
+          numpy sehingga akan lebih mudah untuk diolah.
+        </article>
+      </div>
+      <aside>
+        <img
+          src="https://raw.githubusercontent.com/kurniawan2805/portfolio-react/master/src/img/adi2.png"
+          width="100px"
+          alt="dicoding"
+        />
+        <h3>Adi Kurniawan</h3>
+        <h4>Front End developer.</h4>
+      </aside>
+    </main>
+    <footer>Copyright 2022</footer>
+  </body>
+</html>
